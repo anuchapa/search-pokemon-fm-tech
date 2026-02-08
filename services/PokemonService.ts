@@ -1,7 +1,7 @@
 import { ApolloClient, HttpLink, InMemoryCache, gql } from "@apollo/client"
 import { useQuery } from "@apollo/client/react";
 
-const url: string = "https://graphql-pokemon2.vercel.app/?"
+const url: string =  process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT 
 
 export const client = new ApolloClient({
     link: new HttpLink({ uri: url }),
@@ -14,16 +14,18 @@ export const GET_ALL_POKEMONS = gql`
               id
               number
               name
+              types
               image
             }
           }`;
 
 
-const GET_POKEMON = gql`
+export const GET_POKEMON = gql`
         query pokemon($id: String, $name: String){
           pokemon(id: $id, name: $name){
             id
             name
+            types
             image
             evolutions{
               id
@@ -50,6 +52,7 @@ export interface Pokemon {
     id: string;
     number: string;
     name: string;
+    types : string[];
     image: string;
 }
 
@@ -57,6 +60,7 @@ export interface PokemonDetail {
     id: string;
     number: string;
     name: string;
+    types : string[];
     image: string;
     attacks: Attack
     evolutions: Pokemon[]

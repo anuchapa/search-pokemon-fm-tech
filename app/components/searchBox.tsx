@@ -20,7 +20,7 @@ export function SearchBox({ setPokemons }: {
         const value = e.target.value;
         setSearchValue(value)
         if (name) {
-            router.replace('/blog')
+            router.replace('/')
         }
         if (pokemonBuff && pokemonBuff.length > 0) {
             const filtered = pokemonBuff.filter(p => p.name.toLowerCase().includes(value.toLocaleLowerCase()))

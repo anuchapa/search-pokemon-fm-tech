@@ -18,7 +18,7 @@ export function PokemonPage({ name }: { name: string }) {
   }, [data]);
 
   const handleClose = () => {
-    router.replace("/blog");
+    router.replace("/");
   }
 
   if (pokemon) {
@@ -84,7 +84,7 @@ export function PokemonPage({ name }: { name: string }) {
                   pokemon?.evolutions.map((evo, index) => (
                     <li key={index}>
                       <div>
-                        <Link href={`/blog?name=${evo.name}`}>
+                        <Link href={`/?name=${evo.name}`}>
                           <div className="underline hover:text-blue-600">
                             {evo.name}
                           </div>
